@@ -22,9 +22,9 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('Please provide a prompt to generate a text response.\nExample: ai What is the meaning of life?', event.threadID, messageID);
+            return api.sendMessage('ano ba itatanong mo bhe?', event.threadID, messageID);
         }
-        api.sendMessage('ano ba itatanong mo bhe?', event.threadID);
+        api.sendMessage('wait hanapan kita sagot?', event.threadID);
 
         // Delay
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
