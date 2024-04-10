@@ -1,34 +1,40 @@
-const { Hercai } = require('hercai');
-const herc = new Hercai();
-
 module.exports.config = {
-  name: 'ai',
-  version: '1.1.0',
-  hasPermssion: 0,
-  credits: 'Yan Maglinte',
-  description: 'An AI command using Hercai API!',
-  usePrefix: false,
-  commandCategory: 'chatbots',
-  usages: 'Ai [prompt]',
-  cooldowns: 5,
+  name: "sisi",
+  version: "1.0.1",
+  hasPermission: 2,
+  usePrefix: true,
+  credits: "rickciel",
+  description: "GPT BY CIEL",
+  commandCategory: "ai",
+  usages: "[ask = ai answer]",
+  cooldowns: 2,
 };
 
-module.exports.run = async function ({ api, event, args }) {
-  const prompt = args.join(' ');
+const axios = require("axios");
+
+module.exports.run = async function({ api, event, args }) {
+  let { messageID, threadID, senderID } = event;
+  let tid = threadID,
+    mid = messageID;
+
+  if (!args[0]) {
+    return api.sendMessage("Wait lang bhe hanapan kita sagot.", tid, mid);
+  }
 
   try {
-    // Available Models: "v3", "v3-32k", "turbo", "turbo-16k", "gemini"
-    if (!prompt) {
-      api.sendMessage('Please specify a message!', event.threadID, event.messageID);
-      api.setMessageReaction('❓', event.messageID, () => {}, true);
+    const userMessage = args.join(" ");
+    const apiUrl = 'https://blackbox.chatbotmesss.repl.co/ask';
+
+    const response = await axios.get(apiUrl, { params: { q: userMessage } });
+    const data = response.data;
+
+    if (data.message !== "") {
+      api.sendMessage(data.message, tid, mid);
     } else {
-      api.setMessageReaction('⏱️', event.messageID, () => {}, true);
-      const response = await herc.question({ model: 'v3', content: prompt });
-      api.sendMessage(response.reply, event.threadID, event.messageID);
-      api.setMessageReaction('', event.messageID, () => {}, true);
+      api.sendMessage("Hala bhe di ko mahanap yung sagot may error.", tid, mid);
     }
   } catch (error) {
-    api.sendMessage('⚠️ Something went wrong: ' + error, event.threadID, event.messageID);
-    api.setMessageReaction('⚠️', event.messageID, () => {}, true);
+    console.error(error);
+    api.sendMessage("Shocks may error pasensya na.", tid, mid);
   }
 };
