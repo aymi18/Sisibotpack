@@ -124,7 +124,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
         "❾",
         "❿",
       ];
-      msg += `╭[ ${numberFont[i]} ]─❍ ${
+      msg += `╭[ ${numberFont[i]} ]─🍥 ${
         category.charAt(0).toUpperCase() + category.slice(1)
       }\n╰─◗ ${commandNames.join(", ")}\n\n`;
     }
@@ -180,7 +180,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
     imgP.push(fs.createReadStream(path));
     const config = require("./../../config.json")
     const msgg = {
-  body: `╭──────────────╮\n│𝖢𝗈𝗆𝗆𝖺𝗇𝖽 & 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒│\n╰──────────────╯\n‣ Bot Owner: ${config.DESIGN.Admin}\n\n` + msg + `\n◖Total pages available: ${totalPages}.\n` + `\n╭ ──── ╮\n│ GUIDE │\n╰ ──── ╯\n` + getText("guideList", config.PREFIX),
+  body: `╭──────────────╮\n│🍥𝖢𝗈𝗆𝗆𝖺𝗇𝖽 & 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒🍥│\n╰──────────────╯\n‣ 𝗕𝗢𝗧 𝗢𝗪𝗡𝗘𝗥: ${config.DESIGN.Admin}\n\n` + msg + `\n◖Total pages available: ${totalPages}.\n` + `\n╭ ──── ╮\n│ 🍥 𝗚𝗨𝗜𝗗𝗘🍥 │\n╰ ──── ╯\n` + getText("guideList", config.PREFIX),
   attachment: imgP,
 };
 
