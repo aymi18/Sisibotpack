@@ -1,3 +1,4 @@
+const axios = require('axios');
 const { exec } = require("child_process");
 const chalk = require('chalk');
 const check = require('get-latest-version');
