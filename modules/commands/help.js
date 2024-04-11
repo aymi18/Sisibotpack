@@ -4,7 +4,7 @@ module.exports.config = {
   hasPermission: 0,
   credits: "Mirai Team & Mod by Yan Maglinte",
   description: "Beginner's Guide",
-  usePrefix: true,
+  usePrefix: false,
   commandCategory: "guide",
   usages: "[Shows Commands]",
   cooldowns: 5,
