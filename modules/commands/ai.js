@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-    name: "sisi",
+    name: "yuno",
     version: "1.0.0",
     hasPermission: 0,
     credits: "api by jerome",//api by jerome
@@ -22,9 +22,9 @@ module.exports.run = async function ({ api, event, args }) {
         }
 
         if (!prompt) {
-            return api.sendMessage('ano ba itatanong mo bhe?', event.threadID, messageID);
+            return api.sendMessage('yes love? ano itatanong mo?', event.threadID, messageID);
         }
-        api.sendMessage('wait hanapan kita sagot?', event.threadID);
+        api.sendMessage('wait hanapan kita sagot', event.threadID);
 
         // Delay
         await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay time as needed
@@ -37,7 +37,7 @@ module.exports.run = async function ({ api, event, args }) {
             const generatedText = response.data.response;
 
             // Ai Answer Here
-            api.sendMessage(`🤗 ito sagot bhe\n━━━━━━━━━━━━━━━━\n\n𝗔𝗻𝘀𝘄𝗲𝗿: ${generatedText}\n\n━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+            api.sendMessage(`ito na sagot love\n━━━━━━━━━━━━━━━━\n\n𝗔𝗻𝘀𝘄𝗲𝗿: ${generatedText}\n\n━━━━━━━━━━━━━━━━`, event.threadID, messageID);
         } else {
             console.error('API response did not contain expected data:', response.data);
             api.sendMessage(`❌ halaaa di ko mahanap sagot bhe, daming error. Response data: ${JSON.stringify(response.data)}`, event.threadID, messageID);
